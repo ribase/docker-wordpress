@@ -19,7 +19,7 @@ Just type in Console:
 
 ### Connect
 
-* Host: 127.0.0.1
+* Host: db // yes its just db!
 * Port: 3306
 * PW: wordpress
 * User: wordpress
