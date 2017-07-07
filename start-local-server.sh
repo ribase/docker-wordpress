@@ -18,5 +18,5 @@ echo "Add host to /etc/hosts"
 if grep -q "www.wordpress.local" /etc/hosts; then
     echo "Exists"
 else
-    sudo bash -c "echo '127.0.0.1     www.claraspital.local' >> /etc/hosts"
+    sudo bash -c "echo '127.0.0.1     www.wordpress.local' >> /etc/hosts"
 fi
