@@ -1,0 +1,33 @@
+version: '2'
+services:
+    db:
+        image: mysql
+        ports:
+          - 3306:3306
+        environment:
+          MYSQL_ROOT_PASSWORD: wordpress
+          MYSQL_DATABASE: wordpress
+          MYSQL_USER: wordpress
+          MYSQL_PASSWORD: wordpress
+        volumes_from:
+          - php
+        command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --init-connect='SET NAMES UTF8;' --innodb-flush-log-at-trx-commit=0
+
+
+    php:
+        build: php7-fpm #php5-fpm
+        ports:
+            - 9000
+        volumes:
+          - ../web:/var/www/web
+    nginx:
+        build: nginx
+        ports:
+            - 80:80
+        links:
+            - php
+        volumes_from:
+            - php
+        volumes:
+            - ./logs/nginx/:/var/log/nginx
+        tty: true
